@@ -102,7 +102,107 @@ const data = [
   Hint: You will need to use createElement more than once here!
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
+*/
 
+// const lambdaTimes = document.querySelector('.articles');
+
+// function createArticle(titleData, dateData, p1Data, p2Data, p3Data){
+
+  // const create = element => document.createElement(element);
+  
+  // const divAppendages = divElement => divContainer.appendChild(divElement);
+  
+  // const printer = (element, content) => element.textContent = content;
+  
+//   const classLister = (classedElement, className) => classedElement.classList.add(className);
+
+//   let divContainer = create('div');
+//   let Articletitle = create('h2');
+//   let Articledate = create('p');
+//   let p1 = create('p');
+//   let p2 = create('p');
+//   let p3 = create('p');
+//   let drawer = create('span');
+
+//   divAppendages(Articletitle);
+//   divAppendages(Articledate);
+//   divAppendages(p1);
+//   divAppendages(p2);
+//   divAppendages(p3);
+//   divAppendages(drawer);
+  
+//   printer(Articletitle, titleData)
+//   printer(Articledate, dateData)
+//   printer(p1, p1Data)
+//   printer(p2, p2Data)
+//   printer(p3, p3Data)
+
+//   classLister(divContainer, 'article')
+//   classLister(date, 'date')
+//   classLister(drawer, 'expandButton')
+
+//   divContainer.addEventListener('click', () => {
+//     divContainer.classList.toggle('article-open')
+//   })
+
+// return divContainer
+// }
+
+// data.forEach( function(request){
+// lambdaTimes.appendChild(createArticle(request.title, request.date, request.firstParagraph, request.secondParagraph, request.thirdParagraph))
+// })
+
+
+const newsFeed = document.querySelector('.articles')
+
+function createComponent(title, date, first, second, third){
+  
+  const create = element => document.createElement(element);
+  
+  const divAppendage = element => articleDiv.appendChild(element);
+
+  const printContent = (element, content) => element.textContent = content;
+
+  const articleDiv = create('div')
+  const articleTitle = create('h2')
+  const articleDate = create('p')
+  const paragraph1 = create('p')
+  const paragraph2 = create('p')
+  const paragraph3 = create('p')
+  const button = create('span')
+  
+  //html structure  
+  divAppendage(articleTitle)
+  divAppendage(articleDate)
+  divAppendage(paragraph1)
+  divAppendage(paragraph2)
+  divAppendage(paragraph3)
+  divAppendage(button)
+  
+  printContent(articleTitle, title)
+  printContent(articleDate, date)
+  printContent(paragraph1, first)
+  printContent(paragraph2, second)
+  printContent(paragraph3, third)
+
+  //class names
+  articleDiv.classList.add('article')
+  articleDate.classList.add('date')
+  button.classList.toggle('expandButton')
+  
+  articleDiv.addEventListener('click', () => {
+    articleDiv.classList.toggle('article-open')
+  })
+  
+return articleDiv
+} 
+
+data.forEach( function(articleData){
+  newsFeed.appendChild(createComponent(articleData.title, articleData.date, articleData.firstParagraph, articleData.secondParagraph, articleData.thirdParagraph))
+})
+
+
+/*
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
   Step 3: return the entire component.
@@ -110,5 +210,4 @@ const data = [
   Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
-
 */
